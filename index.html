@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Asin Fathima S, a fresher focused on full stack development, Python, web technologies, and IoT." />
+  <meta name="theme-color" content="#541326" />
+
+  <title>Asin Fathima S | Full Stack Developer</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+</head>
+<body>
+
+<section class="cover-screen" id="coverScreen" aria-label="Portfolio introduction">
+  <div class="cover-content">
+    <div class="cover-card">
+      <h1 class="cover-title" id="coverTitle">Portfolio</h1>
+      <p class="cover-signature">Asin Fathima</p>
+      <button class="enter-btn" id="enterBtn" type="button">Explore portfolio</button>
+    </div>
+  </div>
+</section>
+
+<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <header class="header">
+    <a href="#home" class="logo">ASIN FATHIMA S</a>
+
+    <nav class="navbar" id="navbar">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#learning">Learning</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#competencies">Competencies</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button id="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+      </button>
+
+      <button id="menu-toggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Home Section -->
+    <section class="hero section" id="home">
+      <div class="hero-content">
+        <p class="small-heading">WELCOME TO MY PORTFOLIO </p>
+
+        <h1>
+          <span>Asin Fathima S</span>
+        </h1>
+
+        <h3>Full Stack Developer | Software Developer | Data Analyst | IoT Enthusiast</h3>
+
+        <p class="hero-description">
+          I am passionate about building responsive websites, developing
+          practical applications, and exploring modern technologies.
+        </p>
+
+        <div class="availability-badge">
+          <span class="availability-dot"></span>
+          <span>Open to internships and junior developer opportunities</span>
+        </div>
+
+        <div class="hero-buttons">
+          <a href="#projects" class="btn primary-btn">View Projects</a>
+          <a href="#contact" class="btn secondary-btn">Contact Me</a>
+        </div>
+
+        <div class="social-links">
+          <a href="https://github.com/" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+
+          <a href="https://www.linkedin.com/" target="_blank">
+            <i class="fab fa-linkedin"></i>
+          </a>
+
+          <a href="mailto:asinfathima2705@gmail.com">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <span class="hero-card-label" aria-hidden="true">&lt;/&gt; profile</span>
+        <div class="hero-photo-frame">
+          <span class="hero-photo-corner hero-photo-corner-top" aria-hidden="true"></span>
+          <img
+            class="hero-profile-image"
+            src="profile.jpeg"
+            alt="Portrait of Asin Fathima S"
+          />
+          <span class="hero-photo-corner hero-photo-corner-bottom" aria-hidden="true"></span>
+        </div>
+        <div class="hero-photo-caption" aria-hidden="true">
+          <span class="hero-photo-status"></span>
+          <span>Building with purpose</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+      <div class="section-heading">
+        <p>GET TO KNOW ME</p>
+        <h2>About <span>Me</span></h2>
+      </div>
+
+      <div class="about-content">
+        <div class="about-text">
+          <h3>About Me</h3>
+
+          <p>
+            I am a Computer Applications graduate who enjoys understanding how
+            software can solve practical problems. My learning journey spans
+            software and web development, Python, IoT, and embedded systems,
+            and I enjoy turning what I learn into useful projects.
+          </p>
+
+          <p>
+            I approach each project with curiosity, patience, and a focus on
+            clear problem-solving. As I continue developing my technical
+            foundation, I am building the confidence and professional
+            discipline needed to grow as a developer.
+          </p>
+
+          <a href="#contact" class="btn primary-btn">Let's Connect</a>
+        </div>
+
+        <div class="about-info">
+          <div class="info-box">
+            <i class="fas fa-user-graduate"></i>
+            <h4>Education</h4>
+            <p>Bachelor of Computer Applications (BCA)</p>
+          </div>
+
+          <div class="info-box">
+            <i class="fas fa-laptop-code"></i>
+            <h4>Core Competency</h4>
+            <p>IoT &amp; Embedded Systems</p>
+          </div>
+
+          <div class="info-box">
+            <i class="fas fa-lightbulb"></i>
+            <h4>Strength</h4>
+            <p>Analytical Thinking</p>
+          </div>
+
+          <div class="info-box">
+            <i class="fas fa-people-group"></i>
+            <h4>Working Style</h4>
+            <p>Team Collaboration</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+      <div class="section-heading">
+        <p>MY TECHNICAL KNOWLEDGE</p>
+        <h2>My <span>Skills</span></h2>
+      </div>
+
+      <div class="skill-list-block">
+        <article class="skill-list-group">
+          <h3>Programming Languages</h3>
+          <p>Python | Java | C | C++</p>
+        </article>
+
+        <article class="skill-list-group">
+          <h3>Web Technologies</h3>
+          <p>HTML5 | CSS3 | JavaScript</p>
+        </article>
+
+        <article class="skill-list-group">
+          <h3>Frameworks &amp; Libraries</h3>
+          <p>React.js (Learning) | Node.js (Learning) | Express.js (Learning)</p>
+        </article>
+
+        <article class="skill-list-group">
+          <h3>Full Stack Development</h3>
+          <p>MERN Stack (Learning)</p>
+        </article>
+
+        <article class="skill-list-group">
+          <h3>Database</h3>
+          <p>SQL | MySQL</p>
+        </article>
+
+        <article class="skill-list-group">
+          <h3>Version Control</h3>
+          <p>Git | GitHub</p>
+        </article>
+
+        <article class="skill-list-group">
+          <h3>Cloud &amp; DevOps</h3>
+          <p>AWS (Learning) | Docker (Learning) | Kubernetes (Learning) | DevOps (Learning)</p>
+        </article>
+
+        <article class="skill-list-group">
+          <h3>Software Development</h3>
+          <p>Object-Oriented Programming (OOP) | Data Structures &amp; Algorithms | REST APIs | Software Development Life Cycle (SDLC) | Database Management Systems (DBMS)</p>
+        </article>
+
+        <article class="skill-list-group">
+          <h3>IoT &amp; Embedded Systems</h3>
+          <p>NodeMCU (ESP8266) | Arduino IDE | Embedded Systems | IoT Development</p>
+        </article>
+
+        <article class="skill-list-group">
+          <h3>Operating Systems</h3>
+          <p>Linux | Windows</p>
+        </article>
+
+        <article class="skill-list-group">
+          <h3>Networking</h3>
+          <p>Computer Networks | TCP/IP</p>
+        </article>
+
+        <article class="skill-list-group">
+          <h3>Tools</h3>
+          <p>Visual Studio Code | Eclipse IDE | Microsoft Office Suite</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Learning Section -->
+    <section class="section learning-section" id="learning">
+      <div class="section-heading">
+        <p>MY GROWTH PLAN</p>
+        <h2>Currently <span>Learning</span></h2>
+      </div>
+
+      <div class="learning-stack">
+        <article class="learning-box">
+          <span>01 / Frontend</span>
+          <h3>React.js, component architecture, responsive interfaces, and accessible UI patterns.</h3>
+        </article>
+
+        <article class="learning-box">
+          <span>02 / Backend</span>
+          <h3>Node.js, Express.js, REST APIs, JSON workflows, and full stack application structure.</h3>
+        </article>
+
+        <article class="learning-box">
+          <span>03 / Cloud &amp; DevOps</span>
+          <h3>AWS, Docker, Kubernetes, deployment workflows, and DevOps fundamentals.</h3>
+        </article>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+      <div class="section-heading">
+        <p>MY RECENT WORK</p>
+        <h2>Featured <span>Projects</span></h2>
+      </div>
+
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-icon">
+            <i class="fas fa-shield-halved"></i>
+          </div>
+
+          <h3>ELITE EXHAUST CARE</h3>
+          <p>LPG Leakage and Smoke Detection Safety System</p>
+          <span class="project-date">Dec 2025 - Feb 2026</span>
+
+          <button class="project-link" type="button" data-project="elite">
+            View case study <i class="fas fa-arrow-right"></i>
+          </button>
+        </article>
+
+        <article class="project-card">
+          <div class="project-icon">
+            <i class="fas fa-clipboard-list"></i>
+          </div>
+
+          <h3>CRM Application for Jewel Management</h3>
+          <span class="project-date">June 2025 - Oct 2025</span>
+
+          <button class="project-link" type="button" data-project="crm">
+            View case study <i class="fas fa-arrow-right"></i>
+          </button>
+        </article>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section" id="education">
+      <div class="section-heading">
+        <p>MY ACADEMIC JOURNEY</p>
+        <h2>Education & <span>Experience</span></h2>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-content">
+            <span>May 2026 - Present</span>
+            <h3>Full Stack Development Trainee</h3>
+            <h4>Noble Software Solutions, Tirupur</h4>
+
+            <p>
+              Currently undergoing an intensive Full Stack Development
+              training program at Noble Software Solutions, Tirupur.
+              Gaining hands-on experience in HTML, CSS, JavaScript, React.js,
+              Node.js, Express.js, MySQL, JSON, REST APIs, Git, web
+              application deployment, and full-stack project development.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-content">
+            <span>May 2025 - June 2025</span>
+            <h3>AI with Python Trainee</h3>
+            <h4>ATS Technosoft, Coimbatore</h4>
+
+            <p>
+              Completed intensive training in Artificial Intelligence using
+              Python with practical exposure to core AI concepts and
+              programming fundamentals. Gained hands-on experience through
+              project-oriented learning, real-time use cases, and coding
+              exercises.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-content">
+            <span>2023 - 2026</span>
+            <h3>Bachelor of Computer Applications</h3>
+            <h4>St. Joseph's College for Women, Tirupur</h4>
+
+            <p>
+              Affiliated with Bharathiar University.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section" id="competencies">
+      <div class="section-heading">
+        <p>WHAT I BRING</p>
+        <h2>Core <span>Competencies</span></h2>
+      </div>
+
+      <div class="skill-list-block">
+        <article class="skill-list-group"><h3>IoT &amp; Embedded Systems</h3></article>
+        <article class="skill-list-group"><h3>Software Testing &amp; Debugging</h3></article>
+        <article class="skill-list-group"><h3>Analytical Thinking</h3></article>
+        <article class="skill-list-group"><h3>Team Collaboration</h3></article>
+        <article class="skill-list-group"><h3>Communication Skills</h3></article>
+        <article class="skill-list-group"><h3>Time Management</h3></article>
+        <article class="skill-list-group"><h3>Adaptability &amp; Continuous Learning</h3></article>
+      </div>
+    </section>
+
+    <section class="section" id="additional-information">
+      <div class="section-heading">
+        <p>MORE ABOUT ME</p>
+        <h2>Languages &amp; <span>Achievement</span></h2>
+      </div>
+
+      <div class="about-content">
+        <div class="about-text">
+          <h3>Languages</h3>
+          <div class="language-list" aria-label="Languages">
+            <span>English</span>
+            <span>Tamil</span>
+            <span>Hindi <i class="fas fa-comments" aria-label="spoken"></i></span>
+            <span>Urdu <i class="fas fa-comments" aria-label="spoken"></i></span>
+          </div>
+        </div>
+        <div class="about-text">
+          <h3>Additional Achievement</h3>
+          <button class="achievement-card" id="achievement-trigger" type="button">
+            <span class="achievement-mark"><i class="fas fa-award"></i></span>
+            <span>
+              <strong>How APIs Work in Today's World</strong>
+              <small>Research paper presentation</small>
+            </span>
+            <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+      <div class="section-heading">
+        <p>LET'S WORK TOGETHER</p>
+        <h2>Contact <span>Me</span></h2>
+      </div>
+
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Have a project in mind?</h3>
+
+          <p>
+            Feel free to contact me for opportunities, collaborations,
+            or project discussions.
+          </p>
+
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h4>Email</h4>
+              <p>asinfathima2705@gmail.com</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <h4>Phone</h4>
+              <p>+91 7806812813</p>
+            </div>
+          </div>
+        </div>
+
+        <form id="contact-form" class="contact-form">
+          <input type="text" id="name" placeholder="Your Name" required />
+          <input type="email" id="email" placeholder="Your Email" required />
+          <textarea id="message" rows="6" placeholder="Your Message" required></textarea>
+
+          <button type="submit" class="btn primary-btn">
+            Send Message
+          </button>
+
+          <p id="form-message"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>
+      © <span id="year"></span> Asin Fathima S. All Rights Reserved.
+    </p>
+  </footer>
+
+  <div class="project-modal" id="project-modal" aria-hidden="true">
+    <div class="project-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="modal-close" type="button" aria-label="Close project details">
+        <i class="fas fa-xmark"></i>
+      </button>
+      <p class="modal-kicker">PROJECT CASE STUDY</p>
+      <h2 id="modal-title"></h2>
+      <p class="modal-summary" id="modal-summary"></p>
+      <div class="modal-details">
+        <div>
+          <h3>Focus</h3>
+          <p id="modal-focus"></p>
+        </div>
+        <div>
+          <h3>Learning outcome</h3>
+          <p id="modal-outcome"></p>
+        </div>
+      </div>
+      <div class="modal-tech" id="modal-tech"></div>
+    </div>
+  </div>
+
+  <div class="achievement-modal" id="achievement-modal" aria-hidden="true">
+    <div class="achievement-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="achievement-modal-title">
+      <button class="modal-close" id="achievement-modal-close" type="button" aria-label="Close achievement details">
+        <i class="fas fa-xmark"></i>
+      </button>
+      <p class="modal-kicker">ADDITIONAL ACHIEVEMENT</p>
+      <h2 id="achievement-modal-title">How APIs Work in Today's World</h2>
+      <p>
+        Authored and presented a research paper titled “How APIs Work in
+        Today's World” at an International Conference held at A.V.P. College,
+        Tirupur.
+      </p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
