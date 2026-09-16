@@ -46,25 +46,36 @@ const closeModal = (modal) => {
   document.body.style.overflow = "";
 };
 
-document.querySelectorAll("[data-project]").forEach((trigger) => {
-  trigger.addEventListener("click", () => {
-    const details = projectDetails[trigger.dataset.project];
+const openProjectCaseStudy = (projectKey) => {
+  const details = projectDetails[projectKey];
 
-    if (!details || !projectModal) {
-      return;
-    }
+  if (!details || !projectModal) {
+    return;
+  }
 
-    modalTitle.textContent = details.title;
-    modalSummary.textContent = details.summary;
-    modalFocus.textContent = details.focus;
-    modalOutcome.textContent = details.outcome;
-    modalTech.innerHTML = details.technologies
-      .map((technology) => `<span>${technology}</span>`)
-      .join("");
-    projectModal.classList.add("is-open");
-    projectModal.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-    modalClose.focus();
+  modalTitle.textContent = details.title;
+  modalSummary.textContent = details.summary;
+  modalFocus.textContent = details.focus;
+  modalOutcome.textContent = details.outcome;
+  modalTech.innerHTML = details.technologies
+    .map((technology) => `<span>${technology}</span>`)
+    .join("");
+  projectModal.classList.add("is-open");
+  projectModal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  modalClose.focus();
+};
+
+document.querySelectorAll(".project-card").forEach((projectCard) => {
+  projectCard.addEventListener("click", () => {
+    openProjectCaseStudy(projectCard.dataset.project);
+  });
+});
+
+document.querySelectorAll(".project-link[data-project]").forEach((trigger) => {
+  trigger.addEventListener("click", (event) => {
+    event.stopPropagation();
+    openProjectCaseStudy(trigger.dataset.project);
   });
 });
 
@@ -178,6 +189,12 @@ if (coverTitle) {
 }
 
 // Theme Toggle
+const savedTheme = localStorage.getItem("theme");
+
+if (savedTheme !== "light") {
+  document.body.classList.add("dark-mode");
+}
+
 if (themeToggle) {
   themeToggle.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
@@ -196,17 +213,10 @@ if (themeToggle) {
   });
 }
 
-// Load saved theme
-const savedTheme = localStorage.getItem("theme");
-
-if (savedTheme === "dark") {
-  document.body.classList.add("dark-mode");
-
-  if (themeToggle) {
-    const icon = themeToggle.querySelector("i");
-    icon.classList.remove("fa-moon");
-    icon.classList.add("fa-sun");
-  }
+if (themeToggle && document.body.classList.contains("dark-mode")) {
+  const icon = themeToggle.querySelector("i");
+  icon.classList.remove("fa-moon");
+  icon.classList.add("fa-sun");
 }
 
 // Mobile Menu Toggle
@@ -271,46 +281,163 @@ if (contactForm) {
 
 const cursorDot = document.querySelector(".cursor-dot");
 const cursorRing = document.querySelector(".cursor-ring");
-let lastGlitterTime = 0;
+const cursorTrailCanvas = document.getElementById("cursor-trail");
+const cursorTrailContext = cursorTrailCanvas ? cursorTrailCanvas.getContext("2d") : null;
+const cursorTrailConfig = {
+  particleSize: { min: 9, max: 16 },
+  particleCount: 1,
+  particleFrequency: 72,
+  particleLifetime: 650,
+  particleSpeed: 0.4,
+  glowIntensity: 5,
+  particleOpacity: 0.58,
+  symbols: ["🦋", "✦", "✧", "✨"],
+  trailSmoothness: 0.28,
+  butterflySize: 13,
+  butterflyGlow: 8,
+  butterflyFlapSpeed: 0.006,
+  minimumMovement: 1.5,
+  maxParticles: 42,
+  maxDevicePixelRatio: 1.25
+};
+const cursorTrailState = {
+  x: window.innerWidth / 2,
+  y: window.innerHeight / 2,
+  targetX: window.innerWidth / 2,
+  targetY: window.innerHeight / 2,
+  lastParticleTime: 0,
+  lastEmissionX: window.innerWidth / 2,
+  lastEmissionY: window.innerHeight / 2,
+  hasPointerPosition: false,
+  particles: []
+};
 
-const createGlitter = (x, y) => {
-  const now = performance.now();
-
-  if (now - lastGlitterTime < (isTouchDevice ? 24 : 35)) {
+const resizeCursorTrail = () => {
+  if (!cursorTrailCanvas || !cursorTrailContext || isTouchDevice) {
     return;
   }
 
-  const particleCount = isTouchDevice ? 2 : 1;
+  const devicePixelRatio = Math.min(window.devicePixelRatio || 1, cursorTrailConfig.maxDevicePixelRatio);
+  cursorTrailCanvas.width = Math.floor(window.innerWidth * devicePixelRatio);
+  cursorTrailCanvas.height = Math.floor(window.innerHeight * devicePixelRatio);
+  cursorTrailContext.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+};
 
-  for (let index = 0; index < particleCount; index += 1) {
-    const particle = document.createElement("span");
-    const size = `${(2 + Math.random() * (isTouchDevice ? 5 : 4)).toFixed(2)}px`;
-    const brightness = (0.45 + Math.random() * 0.5).toFixed(2);
-    const driftRange = isTouchDevice ? 46 : 34;
-    const driftX = `${Math.round((Math.random() - 0.5) * driftRange)}px`;
-    const driftY = `${Math.round((Math.random() - 0.5) * driftRange)}px`;
-
-    particle.className = `glitter-particle${isTouchDevice ? " touch-glitter" : ""}`;
-    const particleX = Math.min(Math.max(x + (Math.random() - 0.5) * 8, 4), window.innerWidth - 4);
-    const particleY = Math.min(Math.max(y + (Math.random() - 0.5) * 8, 4), window.innerHeight - 4);
-
-    particle.style.left = `${particleX}px`;
-    particle.style.top = `${particleY}px`;
-    particle.style.width = size;
-    particle.style.height = size;
-    particle.style.setProperty("--brightness", brightness);
-    particle.style.setProperty("--drift-x", driftX);
-    particle.style.setProperty("--drift-y", driftY);
-    document.body.appendChild(particle);
-
-    window.setTimeout(() => particle.remove(), isTouchDevice ? 1100 : 800);
+const addCursorTrailParticles = (now) => {
+  if (!cursorTrailState.hasPointerPosition) {
+    return;
   }
 
-  lastGlitterTime = now;
+  const movement = Math.hypot(
+    cursorTrailState.targetX - cursorTrailState.lastEmissionX,
+    cursorTrailState.targetY - cursorTrailState.lastEmissionY
+  );
+
+  if (movement < cursorTrailConfig.minimumMovement) {
+    return;
+  }
+
+  if (now - cursorTrailState.lastParticleTime < cursorTrailConfig.particleFrequency) {
+    return;
+  }
+
+  cursorTrailState.lastParticleTime = now;
+  cursorTrailState.lastEmissionX = cursorTrailState.targetX;
+  cursorTrailState.lastEmissionY = cursorTrailState.targetY;
+
+  for (let index = 0; index < cursorTrailConfig.particleCount; index += 1) {
+    const sizeRange = cursorTrailConfig.particleSize.max - cursorTrailConfig.particleSize.min;
+    cursorTrailState.particles.push({
+      x: cursorTrailState.x + (Math.random() - 0.5) * 8,
+      y: cursorTrailState.y + (Math.random() - 0.5) * 8,
+      age: 0,
+      size: cursorTrailConfig.particleSize.min + Math.random() * sizeRange,
+      opacity: cursorTrailConfig.particleOpacity * (0.7 + Math.random() * 0.3),
+      rotation: (Math.random() - 0.5) * 0.8,
+      rotationSpeed: (Math.random() - 0.5) * 0.002,
+      velocityX: (Math.random() - 0.5) * cursorTrailConfig.particleSpeed,
+      velocityY: (Math.random() - 0.5) * cursorTrailConfig.particleSpeed,
+      symbol: cursorTrailConfig.symbols[Math.floor(Math.random() * cursorTrailConfig.symbols.length)]
+    });
+  }
+
+  if (cursorTrailState.particles.length > cursorTrailConfig.maxParticles) {
+    cursorTrailState.particles.splice(0, cursorTrailState.particles.length - cursorTrailConfig.maxParticles);
+  }
+};
+
+const drawButterflyCursor = (now, primaryColor, accentColor) => {
+  const { x, y } = cursorTrailState;
+  const flap = Math.sin(now * cursorTrailConfig.butterflyFlapSpeed) * 0.18;
+  const size = cursorTrailConfig.butterflySize;
+
+  cursorTrailContext.save();
+  cursorTrailContext.translate(x, y);
+  cursorTrailContext.globalAlpha = 0.9;
+  cursorTrailContext.shadowBlur = cursorTrailConfig.butterflyGlow;
+  cursorTrailContext.shadowColor = primaryColor;
+
+  cursorTrailContext.fillStyle = accentColor;
+  cursorTrailContext.beginPath();
+  cursorTrailContext.ellipse(-size * 0.48, -size * 0.18, size * (0.45 + flap), size * 0.72, -0.35, 0, Math.PI * 2);
+  cursorTrailContext.ellipse(size * 0.48, -size * 0.18, size * (0.45 + flap), size * 0.72, 0.35, 0, Math.PI * 2);
+  cursorTrailContext.fill();
+
+  cursorTrailContext.fillStyle = primaryColor;
+  cursorTrailContext.beginPath();
+  cursorTrailContext.ellipse(0, 0, size * 0.12, size * 0.68, 0, 0, Math.PI * 2);
+  cursorTrailContext.fill();
+  cursorTrailContext.restore();
+};
+
+const drawCursorTrail = (now, delta) => {
+  if (!cursorTrailContext) {
+    return;
+  }
+
+  const isDarkMode = document.body.classList.contains("dark-mode");
+  const primaryColor = isDarkMode ? "#f3d998" : "#6d2940";
+  const accentColor = isDarkMode ? "#c86d7d" : "#a8792f";
+  cursorTrailContext.clearRect(0, 0, window.innerWidth, window.innerHeight);
+  cursorTrailContext.textAlign = "center";
+  cursorTrailContext.textBaseline = "middle";
+
+  cursorTrailState.particles = cursorTrailState.particles.filter((particle) => {
+    particle.age += delta;
+    particle.x += particle.velocityX * delta;
+    particle.y += particle.velocityY * delta;
+    particle.rotation += particle.rotationSpeed * delta;
+
+    if (particle.age >= cursorTrailConfig.particleLifetime) {
+      return false;
+    }
+
+    const lifetimeProgress = particle.age / cursorTrailConfig.particleLifetime;
+    const fade = 1 - lifetimeProgress;
+    cursorTrailContext.save();
+    cursorTrailContext.translate(particle.x, particle.y);
+    cursorTrailContext.rotate(particle.rotation);
+    cursorTrailContext.globalAlpha = particle.opacity * fade;
+    cursorTrailContext.font = `${particle.size * (0.8 + fade * 0.2)}px sans-serif`;
+    cursorTrailContext.shadowBlur = cursorTrailConfig.glowIntensity * fade;
+    cursorTrailContext.shadowColor = particle.symbol === "🦋" ? accentColor : primaryColor;
+    cursorTrailContext.fillStyle = particle.symbol === "🦋" ? accentColor : primaryColor;
+    cursorTrailContext.fillText(particle.symbol, 0, 0);
+    cursorTrailContext.restore();
+    return true;
+  });
+
+  cursorTrailState.x += (cursorTrailState.targetX - cursorTrailState.x) * cursorTrailConfig.trailSmoothness;
+  cursorTrailState.y += (cursorTrailState.targetY - cursorTrailState.y) * cursorTrailConfig.trailSmoothness;
+  drawButterflyCursor(now, primaryColor, accentColor);
 };
 
 window.addEventListener("pointermove", (event) => {
-  createGlitter(event.clientX, event.clientY);
+  if (!isTouchDevice && cursorTrailCanvas) {
+    cursorTrailState.targetX = event.clientX;
+    cursorTrailState.targetY = event.clientY;
+    cursorTrailState.hasPointerPosition = true;
+  }
 
   if (!isTouchDevice && cursorDot && cursorRing) {
     cursorDot.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`;
@@ -327,17 +454,12 @@ window.addEventListener("pointermove", (event) => {
   }
 });
 
-window.addEventListener(
-  "pointerdown",
-  (event) => {
-    if (isTouchDevice) {
-      createGlitter(event.clientX, event.clientY);
-    }
-  },
-  { passive: true }
-);
+if (!isTouchDevice && cursorTrailCanvas) {
+  resizeCursorTrail();
+  window.addEventListener("resize", resizeCursorTrail);
+}
 
-if (!isTouchDevice && cursorDot && cursorRing) {
+if (!isTouchDevice && (cursorTrailCanvas || (cursorDot && cursorRing))) {
   const state = {
     x: window.innerWidth / 2,
     y: window.innerHeight / 2,
@@ -350,14 +472,21 @@ if (!isTouchDevice && cursorDot && cursorRing) {
     state.y = event.clientY;
   });
 
-  const animateCursor = () => {
+  let previousTime = performance.now();
+  const animateCursor = (now) => {
+    const delta = Math.min(now - previousTime, 40);
+    previousTime = now;
     state.ringX += (state.x - state.ringX) * 0.18;
     state.ringY += (state.y - state.ringY) * 0.18;
-    cursorRing.style.transform = `translate(${state.ringX - 19}px, ${state.ringY - 19}px)`;
+    if (cursorRing) {
+      cursorRing.style.transform = `translate(${state.ringX - 19}px, ${state.ringY - 19}px)`;
+    }
+    addCursorTrailParticles(now);
+    drawCursorTrail(now, delta);
     requestAnimationFrame(animateCursor);
   };
 
-  requestAnimationFrame(animateCursor);
+  requestAnimationFrame((now) => animateCursor(now));
 
   document.addEventListener("pointerdown", () => {
     cursorRing.classList.add("active");
