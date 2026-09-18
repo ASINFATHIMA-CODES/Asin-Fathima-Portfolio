@@ -17,30 +17,21 @@
 </head>
 <body>
 
-<section class="cover-screen" id="coverScreen" aria-label="Portfolio introduction">
-  <div class="cover-content">
-    <div class="cover-card">
-      <h1 class="cover-title" id="coverTitle">Portfolio</h1>
-      <p class="cover-signature">Asin Fathima</p>
-      <button class="enter-btn" id="enterBtn" type="button">Explore portfolio</button>
-    </div>
-  </div>
-</section>
-
 <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
   <header class="header">
     <a href="#home" class="logo">ASIN FATHIMA S</a>
 
     <nav class="navbar" id="navbar">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#learning">Learning</a>
-      <a href="#projects">Projects</a>
-      <a href="#education">Education</a>
-      <a href="#competencies">Competencies</a>
-      <a href="#contact">Contact</a>
+      <a href="#home"><i class="fas fa-house" aria-hidden="true"></i>Home</a>
+      <a href="#about"><i class="fas fa-user" aria-hidden="true"></i>About</a>
+      <a href="#skills"><i class="fas fa-code" aria-hidden="true"></i>Skills</a>
+      <a href="#learning"><i class="fas fa-compass" aria-hidden="true"></i>Learning</a>
+      <a href="#projects"><i class="fas fa-layer-group" aria-hidden="true"></i>Projects</a>
+      <a href="#experience"><i class="fas fa-briefcase" aria-hidden="true"></i>Experience</a>
+      <a href="#education"><i class="fas fa-graduation-cap" aria-hidden="true"></i>Education</a>
+      <a href="#documents"><i class="fas fa-file-lines" aria-hidden="true"></i>Documents</a>
+      <a href="#contact"><i class="fas fa-envelope" aria-hidden="true"></i>Contact</a>
     </nav>
 
     <div class="header-actions">
@@ -48,7 +39,7 @@
         <i class="fas fa-moon"></i>
       </button>
 
-      <button id="menu-toggle" aria-label="Toggle menu">
+      <button id="menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="navbar">
         <i class="fas fa-bars"></i>
       </button>
     </div>
@@ -62,14 +53,20 @@
         <p class="small-heading">WELCOME TO MY PORTFOLIO </p>
 
         <h1>
-          <span>Asin Fathima S</span>
+          <span>Asin Fathima S </span>
         </h1>
 
-        <h3>Full Stack Developer | Software Developer | Data Analyst | IoT Enthusiast</h3>
+          <h3 class="hero-role" aria-live="polite">
+          <span class="role-static-text">I am a</span>
+          <span class="role-dynamic-wrap">
+            <span id="role-text" class="role-dynamic-text">Python Developer</span>
+            <span class="typing-cursor" aria-hidden="true"></span>
+          </span>
+        </h3>
 
         <p class="hero-description">
-          I am passionate about building responsive websites, developing
-          practical applications, and exploring modern technologies.
+          Computer Applications graduate with strong foundations in software
+          development, web development, IoT development, and Salesforce CRM.
         </p>
 
         <div class="availability-badge">
@@ -83,112 +80,54 @@
         </div>
 
         <div class="social-links">
-          <a href="https://github.com/" target="_blank">
-            <i class="fab fa-github"></i>
-          </a>
-
-          <a href="https://www.linkedin.com/" target="_blank">
-            <i class="fab fa-linkedin"></i>
-          </a>
-
-          <a href="mailto:asinfathima2705@gmail.com">
-            <i class="fas fa-envelope"></i>
-          </a>
+          <a href="https://github.com/" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+          <a href="mailto:asinfathima2705@gmail.com"><i class="fas fa-envelope"></i></a>
         </div>
       </div>
 
       <div class="hero-card">
         <span class="hero-card-label" aria-hidden="true">&lt;/&gt; profile</span>
-        <div class="hero-photo-frame">
-          <span class="hero-photo-corner hero-photo-corner-top" aria-hidden="true"></span>
-          <img
-            class="hero-profile-image"
-            src="profile.jpeg"
-            alt="Portrait of Asin Fathima S"
-          />
-          <span class="hero-photo-corner hero-photo-corner-bottom" aria-hidden="true"></span>
+        <div class="hero-photo-frame-wrapper">
+          <div class="hero-photo-role-stack" aria-live="polite" aria-hidden="true"></div>
+          <div class="hero-photo-frame" tabindex="0" role="button" aria-label="Show developer roles" aria-expanded="false">
+            <span class="hero-photo-corner hero-photo-corner-top" aria-hidden="true"></span>
+            <img class="hero-profile-image" src="profile.jpeg" alt="Portrait of Asin Fathima S" />
+            <span class="hero-photo-corner hero-photo-corner-bottom" aria-hidden="true"></span>
+          </div>
         </div>
-        <div class="hero-photo-caption" aria-hidden="true">
+        <div class="hero-photo-caption">
           <span class="hero-photo-status"></span>
-          <span>Building with purpose</span>
+          <span id="profile-role-text">Full Stack Developer</span>
         </div>
       </div>
     </section>
 
+    <div class="skills-ticker" aria-label="Technologies and skills">
+      <div class="skills-ticker-track">
+        <span>PYTHON</span><span>JAVASCRIPT</span><span>REACT.JS</span><span>NODE.JS</span><span>SQL</span><span>MYSQL</span><span>SALESFORCE</span><span>REST APIs</span><span>IoT</span><span>GIT &amp; GITHUB</span>
+      </div>
+    </div>
+
     <!-- About Section -->
     <section class="section" id="about">
       <div class="section-heading">
-        <p>GET TO KNOW ME</p>
-        <h2>About <span>Me</span></h2>
+        <p>01 — ABOUT ME</p>
+        <h2>Building ideas into <span>digital experiences</span></h2>
       </div>
 
       <div class="about-content">
         <div class="about-text">
           <h3>About Me</h3>
-
-          <p>
-            I am a Computer Applications graduate who enjoys understanding how
-            software can solve practical problems. My learning journey spans
-            software and web development, Python, IoT, and embedded systems,
-            and I enjoy turning what I learn into useful projects.
-          </p>
-
-          <p>
-            I approach each project with curiosity, patience, and a focus on
-            clear problem-solving. As I continue developing my technical
-            foundation, I am building the confidence and professional
-            discipline needed to grow as a developer.
-          </p>
-
+          <p>I am a Computer Applications graduate who enjoys understanding how software can solve practical problems. My learning journey spans software and web development, Python, IoT, and embedded systems, and I enjoy turning what I learn into useful projects.</p>
+          <p>I approach each project with curiosity, patience, and a focus on clear problem-solving.</p>
           <a href="#contact" class="btn primary-btn">Let's Connect</a>
-
-          <div class="resume-downloads" aria-label="Resume downloads">
-            <a
-              class="resume-download"
-              href="assets/resume/Resume.pdf"
-              download="Resume.pdf"
-              data-resume-download
-            >
-              <i class="fas fa-file-pdf" aria-hidden="true"></i>
-              <span>Download Resume - PDF</span>
-            </a>
-            <a
-              class="resume-download"
-              href="assets/resume/Resume.docx"
-              download="Resume.docx"
-              data-resume-download
-            >
-              <i class="fas fa-file-word" aria-hidden="true"></i>
-              <span>Download Resume - Word</span>
-            </a>
-          </div>
-          <p class="resume-download-status" id="resume-download-status" role="status" aria-live="polite"></p>
         </div>
-
         <div class="about-info">
-          <div class="info-box">
-            <i class="fas fa-user-graduate"></i>
-            <h4>Education</h4>
-            <p>Bachelor of Computer Applications (BCA)</p>
-          </div>
-
-          <div class="info-box">
-            <i class="fas fa-laptop-code"></i>
-            <h4>Core Competency</h4>
-            <p>IoT &amp; Embedded Systems</p>
-          </div>
-
-          <div class="info-box">
-            <i class="fas fa-lightbulb"></i>
-            <h4>Strength</h4>
-            <p>Analytical Thinking</p>
-          </div>
-
-          <div class="info-box">
-            <i class="fas fa-people-group"></i>
-            <h4>Working Style</h4>
-            <p>Team Collaboration</p>
-          </div>
+          <div class="info-box"><i class="fas fa-user-graduate"></i><h4>BCA</h4><p>Computer Applications graduate</p></div>
+          <div class="info-box"><i class="fas fa-laptop-code"></i><h4>9+ Projects</h4><p>Academic and training projects</p></div>
+          <div class="info-box"><i class="fas fa-lightbulb"></i><h4>Full Stack Developer Trainee</h4><p>Building practical web applications</p></div>
+          <div class="info-box"><i class="fas fa-people-group"></i><h4>IoT Designer</h4><p>Designing sensor-based solutions</p></div>
         </div>
       </div>
     </section>
@@ -196,69 +135,58 @@
     <!-- Skills Section -->
     <section class="section" id="skills">
       <div class="section-heading">
-        <p>MY TECHNICAL KNOWLEDGE</p>
-        <h2>My <span>Skills</span></h2>
+        <p>02 — MY TECHNICAL TOOLBOX</p>
+        <h2>My technical <span>toolbox</span></h2>
       </div>
 
-      <div class="skill-list-block">
+      <div class="skill-list-block skill-category-grid">
         <article class="skill-list-group">
-          <h3>Programming Languages</h3>
-          <p>Python | Java | C | C++</p>
+          <h3><i class="fas fa-terminal" aria-hidden="true"></i>Programming</h3>
+          <div class="skill-tech-grid">
+            <span class="skill-tech"><i class="fab fa-python"></i>Python</span><span class="skill-tech"><i class="fas fa-mug-hot"></i>Java</span><span class="skill-tech"><i class="fas fa-c"></i>C</span><span class="skill-tech"><i class="fas fa-code"></i>C++</span>
+          </div>
         </article>
 
         <article class="skill-list-group">
-          <h3>Web Technologies</h3>
-          <p>HTML5 | CSS3 | JavaScript</p>
+          <h3><i class="fas fa-globe" aria-hidden="true"></i>Web Development</h3>
+          <div class="skill-tech-grid">
+            <span class="skill-tech"><i class="fab fa-html5"></i>HTML5</span><span class="skill-tech"><i class="fab fa-css3-alt"></i>CSS3</span><span class="skill-tech"><i class="fab fa-js"></i>JavaScript</span><span class="skill-tech"><i class="fab fa-react"></i>React.js <small>Learning</small></span>
+          </div>
         </article>
 
         <article class="skill-list-group">
-          <h3>Frameworks &amp; Libraries</h3>
-          <p>React.js (Learning) | Node.js (Learning) | Express.js (Learning)</p>
+          <h3><i class="fas fa-plug" aria-hidden="true"></i>Backend &amp; APIs</h3>
+          <div class="skill-tech-grid">
+            <span class="skill-tech"><i class="fab fa-node-js"></i>Node.js <small>Learning</small></span><span class="skill-tech"><i class="fas fa-server"></i>Express.js <small>Learning</small></span><span class="skill-tech"><i class="fas fa-brackets-curly"></i>JSON</span><span class="skill-tech"><i class="fas fa-share-nodes"></i>REST APIs</span><span class="skill-tech"><i class="fas fa-layer-group"></i>MERN Stack <small>Learning</small></span>
+          </div>
         </article>
 
         <article class="skill-list-group">
-          <h3>Full Stack Development</h3>
-          <p>MERN Stack (Learning)</p>
+          <h3><i class="fas fa-database" aria-hidden="true"></i>Database &amp; Software</h3>
+          <div class="skill-tech-grid">
+            <span class="skill-tech"><i class="fas fa-database"></i>SQL</span><span class="skill-tech"><i class="fas fa-table"></i>MySQL</span><span class="skill-tech"><i class="fas fa-sitemap"></i>OOP</span><span class="skill-tech"><i class="fas fa-diagram-project"></i>Data Structures</span><span class="skill-tech"><i class="fas fa-database"></i>DBMS</span><span class="skill-tech"><i class="fas fa-arrows-rotate"></i>SDLC</span>
+          </div>
         </article>
 
         <article class="skill-list-group">
-          <h3>Database</h3>
-          <p>SQL | MySQL</p>
+          <h3><i class="fas fa-cloud" aria-hidden="true"></i>Salesforce</h3>
+          <div class="skill-tech-grid">
+            <span class="skill-tech"><i class="fas fa-cloud"></i>Salesforce CRM</span><span class="skill-tech"><i class="fas fa-code"></i>Apex</span><span class="skill-tech"><i class="fas fa-magnifying-glass"></i>SOQL</span><span class="skill-tech"><i class="fas fa-diagram-project"></i>Salesforce Flow</span><span class="skill-tech"><i class="fas fa-cubes"></i>Lightning App Builder</span>
+          </div>
         </article>
 
         <article class="skill-list-group">
-          <h3>Version Control</h3>
-          <p>Git | GitHub</p>
+          <h3><i class="fas fa-microchip" aria-hidden="true"></i>IoT &amp; Embedded</h3>
+          <div class="skill-tech-grid">
+            <span class="skill-tech"><i class="fas fa-microchip"></i>NodeMCU</span><span class="skill-tech"><i class="fas fa-wifi"></i>ESP8266</span><span class="skill-tech"><i class="fas fa-gears"></i>Arduino IDE</span><span class="skill-tech"><i class="fas fa-satellite-dish"></i>IoT Development</span><span class="skill-tech"><i class="fas fa-code"></i>Embedded Systems</span><span class="skill-tech"><i class="fas fa-cloud-arrow-up"></i>Blynk</span><span class="skill-tech"><i class="fas fa-fire-flame-curved"></i>Firebase</span>
+          </div>
         </article>
 
         <article class="skill-list-group">
-          <h3>Cloud &amp; DevOps</h3>
-          <p>AWS (Learning) | Docker (Learning) | Kubernetes (Learning) | DevOps (Learning)</p>
-        </article>
-
-        <article class="skill-list-group">
-          <h3>Software Development</h3>
-          <p>Object-Oriented Programming (OOP) | Data Structures &amp; Algorithms | REST APIs | Software Development Life Cycle (SDLC) | Database Management Systems (DBMS)</p>
-        </article>
-
-        <article class="skill-list-group">
-          <h3>IoT &amp; Embedded Systems</h3>
-          <p>NodeMCU (ESP8266) | Arduino IDE | Embedded Systems | IoT Development</p>
-        </article>
-
-        <article class="skill-list-group">
-          <h3>Operating Systems</h3>
-          <p>Linux | Windows</p>
-        </article>
-
-        <article class="skill-list-group">
-          <h3>Networking</h3>
-          <p>Computer Networks | TCP/IP</p>
-        </article>
-
-        <article class="skill-list-group">
-          <h3>Tools</h3>
-          <p>Visual Studio Code | Eclipse IDE | Microsoft Office Suite</p>
+          <h3><i class="fas fa-toolbox" aria-hidden="true"></i>Tools &amp; Platforms</h3>
+          <div class="skill-tech-grid">
+            <span class="skill-tech"><i class="fab fa-git-alt"></i>Git</span><span class="skill-tech"><i class="fab fa-github"></i>GitHub</span><span class="skill-tech"><i class="fab fa-aws"></i>AWS <small>Learning</small></span><span class="skill-tech"><i class="fab fa-docker"></i>Docker <small>Learning</small></span><span class="skill-tech"><i class="fas fa-dharmachakra"></i>Kubernetes <small>Learning</small></span><span class="skill-tech"><i class="fas fa-code-branch"></i>DevOps <small>Learning</small></span><span class="skill-tech"><i class="fas fa-laptop-code"></i>Visual Studio Code</span><span class="skill-tech"><i class="fas fa-desktop"></i>Eclipse IDE</span><span class="skill-tech"><i class="fab fa-linux"></i>Linux</span><span class="skill-tech"><i class="fab fa-windows"></i>Windows</span><span class="skill-tech"><i class="fas fa-network-wired"></i>TCP/IP</span>
+          </div>
         </article>
       </div>
     </section>
@@ -266,24 +194,51 @@
     <!-- Learning Section -->
     <section class="section learning-section" id="learning">
       <div class="section-heading">
-        <p>MY GROWTH PLAN</p>
+        <p>03 — CURRENT LEARNING</p>
         <h2>Currently <span>Learning</span></h2>
       </div>
 
+      <h3 class="think-time-title">Think Time</h3>
+
       <div class="learning-stack">
-        <article class="learning-box">
-          <span>01 / Frontend</span>
-          <h3>React.js, component architecture, responsive interfaces, and accessible UI patterns.</h3>
+        <article class="learning-box learning-category-card">
+          <div class="learning-category-header">
+            <span class="learning-category-icon"><i class="fab fa-html5" aria-hidden="true"></i></span>
+            <h3>Front End</h3>
+          </div>
+          <div class="learning-tech-grid">
+            <span class="skill-tech"><i class="fab fa-html5"></i>HTML5</span>
+            <span class="skill-tech"><i class="fab fa-css3-alt"></i>CSS3</span>
+            <span class="skill-tech"><i class="fab fa-js"></i>JavaScript</span>
+            <span class="skill-tech"><i class="fab fa-react"></i>React.js <small>Learning</small></span>
+          </div>
         </article>
 
-        <article class="learning-box">
-          <span>02 / Backend</span>
-          <h3>Node.js, Express.js, REST APIs, JSON workflows, and full stack application structure.</h3>
+        <article class="learning-box learning-category-card">
+          <div class="learning-category-header">
+            <span class="learning-category-icon"><i class="fas fa-server" aria-hidden="true"></i></span>
+            <h3>Back End</h3>
+          </div>
+          <div class="learning-tech-grid">
+            <span class="skill-tech"><i class="fab fa-node-js"></i>Node.js <small>Learning</small></span>
+            <span class="skill-tech"><i class="fas fa-server"></i>Express.js <small>Learning</small></span>
+            <span class="skill-tech"><i class="fas fa-share-nodes"></i>REST APIs <small>Learning</small></span>
+            <span class="skill-tech"><i class="fas fa-code"></i>JSON</span>
+          </div>
         </article>
 
-        <article class="learning-box">
-          <span>03 / Cloud &amp; DevOps</span>
-          <h3>AWS, Docker, Kubernetes, deployment workflows, and DevOps fundamentals.</h3>
+        <article class="learning-box learning-category-card">
+          <div class="learning-category-header">
+            <span class="learning-category-icon"><i class="fas fa-cloud" aria-hidden="true"></i></span>
+            <h3>Cloud &amp; DevOps</h3>
+          </div>
+          <div class="learning-tech-grid">
+            <span class="skill-tech"><i class="fab fa-aws"></i>AWS <small>Learning</small></span>
+            <span class="skill-tech"><i class="fab fa-git-alt"></i>Git</span>
+            <span class="skill-tech"><i class="fab fa-github"></i>GitHub</span>
+            <span class="skill-tech"><i class="fas fa-dharmachakra"></i>Kubernetes <small>Learning</small></span>
+            <span class="skill-tech"><i class="fab fa-docker"></i>Docker <small>Learning</small></span>
+          </div>
         </article>
       </div>
     </section>
@@ -291,146 +246,114 @@
     <!-- Projects Section -->
     <section class="section" id="projects">
       <div class="section-heading">
-        <p>MY RECENT WORK</p>
-        <h2>Featured <span>Projects</span></h2>
+        <p>04 — THINGS I WILL BUILD</p>
+        <h2>Things I've <span>built</span></h2>
       </div>
-
       <div class="projects-grid">
-        <article class="project-card" data-project="elite">
-          <div class="project-icon">
-            <i class="fas fa-shield-halved"></i>
+        <article class="project-card" data-project="mp3TagEditor"><div class="project-icon"><i class="fas fa-tags"></i></div><span class="project-number">01</span><h3>MP3 Tag Reader and Editor</h3><p>Command-line application for reading, displaying, and modifying ID3 metadata.</p><span class="project-date">July 2026 - August 2026</span><div class="project-tags"><span>C</span><span>ID3</span><span>Binary Files</span></div><button class="project-link" type="button" data-project="mp3TagEditor">View case study <i class="fas fa-arrow-right"></i></button></article>
+        <article class="project-card" data-project="steganography"><div class="project-icon"><i class="fas fa-file-image"></i></div><span class="project-number">02</span><h3>Image Steganography Using LSB Encoding &amp; Decoding</h3><p>Secure text hiding and retrieval inside BMP images using LSB encoding.</p><span class="project-date">May 2026 - June 2026</span><div class="project-tags"><span>C</span><span>LSB</span><span>BMP</span></div><button class="project-link" type="button" data-project="steganography">View case study <i class="fas fa-arrow-right"></i></button></article>
+        <article class="project-card" data-project="addressBook"><div class="project-icon"><i class="fas fa-address-book"></i></div><span class="project-number">03</span><h3>Address Book Management System</h3><p>Command-line contact management with persistent file storage.</p><span class="project-date">March 2026 - April 2026</span><div class="project-tags"><span>C</span><span>CLI</span><span>File Handling</span></div><button class="project-link" type="button" data-project="addressBook">View case study <i class="fas fa-arrow-right"></i></button></article>
+        <article class="project-card" data-project="elite"><div class="project-icon"><i class="fas fa-shield-halved"></i></div><span class="project-number">04</span><h3>ELITE EXHAUST CARE</h3><p>IoT smart kitchen safety monitoring for LPG, fire, smoke, and temperature.</p><span class="project-date">December 2025 - February 2026</span><div class="project-tags"><span>ESP8266</span><span>Blynk</span><span>Firebase</span></div><button class="project-link" type="button" data-project="elite">View case study <i class="fas fa-arrow-right"></i></button></article>
+        <article class="project-card" data-project="laserGrid"><div class="project-icon"><i class="fas fa-crosshairs"></i></div><span class="project-number">05</span><h3>Laser Beam Security Grid - IoT</h3><p>Real-time intrusion detection using a laser transmitter, LDR, and NodeMCU.</p><span class="project-date">October 2025 - November 2025</span><div class="project-tags"><span>NodeMCU</span><span>LDR</span><span>Wi-Fi</span></div><button class="project-link" type="button" data-project="laserGrid">View case study <i class="fas fa-arrow-right"></i></button></article>
+        <article class="project-card" data-project="irrigation"><div class="project-icon"><i class="fas fa-droplet"></i></div><span class="project-number">06</span><h3>Automatic Irrigation System Using Rain Sensor and Soil Moisture Sensor</h3><p>Automated plant watering controlled by soil moisture and rain conditions.</p><span class="project-date">August 2025 - September 2025</span><div class="project-tags"><span>NodeMCU</span><span>Blynk</span><span>Automation</span></div><button class="project-link" type="button" data-project="irrigation">View case study <i class="fas fa-arrow-right"></i></button></article>
+        <article class="project-card" data-project="crm"><div class="project-icon"><i class="fas fa-clipboard-list"></i></div><span class="project-number">07</span><h3>CRM Jewel Management System</h3><p>Salesforce CRM for customer information, sales records, reports, and dashboards.</p><span class="project-date">June 2025 - July 2025</span><div class="project-tags"><span>Salesforce</span><span>Reports</span><span>Dashboards</span></div><button class="project-link" type="button" data-project="crm">View case study <i class="fas fa-arrow-right"></i></button></article>
+        <article class="project-card" data-project="lease"><div class="project-icon"><i class="fas fa-building"></i></div><span class="project-number">08</span><h3>Lease Management System - Salesforce CRM</h3><p>Salesforce system for properties, tenants, leases, payments, and automation.</p><span class="project-date">November 2024 - May 2025</span><div class="project-tags"><span>Salesforce</span><span>Apex</span><span>SOQL</span></div><button class="project-link" type="button" data-project="lease">View case study <i class="fas fa-arrow-right"></i></button></article>
+        <article class="project-card" data-project="ecommerce"><div class="project-icon"><i class="fas fa-cart-shopping"></i></div><span class="project-number">09</span><h3>E-Commerce API Development</h3><p>Backend APIs for product management, data handling, and e-commerce operations.</p><span class="project-date">February 2024 - March 2024</span><div class="project-tags"><span>Python</span><span>REST API</span><span>JSON</span></div><button class="project-link" type="button" data-project="ecommerce">View case study <i class="fas fa-arrow-right"></i></button></article>
+        <article class="project-card" data-project="guardian"><div class="project-icon"><i class="fas fa-user-shield"></i></div><span class="project-number">10</span><h3>Guardian Care Autonomous Safety Network - IoT</h3><p>Restricted-area monitoring using PIR, ultrasonic sensing, NodeMCU, and alerts.</p><span class="project-date">December 2023 - January 2024</span><div class="project-tags"><span>PIR</span><span>HC-SR04</span><span>NodeMCU</span></div><button class="project-link" type="button" data-project="guardian">View case study <i class="fas fa-arrow-right"></i></button></article>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section" id="experience">
+      <div class="section-heading">
+        <p>05 — MY LEARNING &amp; PROFESSIONAL JOURNEY</p>
+        <h2>Learning &amp; <span>Experience</span></h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span>May 2026 - Present</span>
+            <h3>Full Stack Developer Trainee</h3>
+            <h4>Noble Software Solutions, Tirupur</h4>
+            <p>Strengthening skills in web application development, REST APIs, databases, Git, debugging, and full-stack project development.</p>
           </div>
-
-          <h3>ELITE EXHAUST CARE</h3>
-          <p>LPG Leakage and Smoke Detection Safety System</p>
-          <span class="project-date">Dec 2025 - Feb 2026</span>
-
-          <button class="project-link" type="button" data-project="elite">
-            View case study <i class="fas fa-arrow-right"></i>
-          </button>
-        </article>
-
-        <article class="project-card" data-project="crm">
-          <div class="project-icon">
-            <i class="fas fa-clipboard-list"></i>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span>May 2025 - June 2025</span>
+            <h3>AI &amp; Python Stack Developer Trainee</h3>
+            <h4>ATS Technosoft, Coimbatore</h4>
+            <p>Completed practical training in Python, AI fundamentals, programming, and project-oriented development.</p>
           </div>
-
-          <h3>CRM Application for Jewel Management</h3>
-          <span class="project-date">June 2025 - Oct 2025</span>
-
-          <button class="project-link" type="button" data-project="crm">
-            View case study <i class="fas fa-arrow-right"></i>
-          </button>
-        </article>
+        </div>
       </div>
     </section>
 
     <!-- Education Section -->
     <section class="section" id="education">
       <div class="section-heading">
-        <p>MY ACADEMIC JOURNEY</p>
-        <h2>Education & <span>Experience</span></h2>
+        <p>06 — ACADEMIC BACKGROUND</p>
+        <h2>Academic <span>Background</span></h2>
       </div>
 
       <div class="timeline">
-
         <div class="timeline-item">
           <div class="timeline-dot"></div>
-
-          <div class="timeline-content">
-            <span>May 2026 - Present</span>
-            <h3>Full Stack Development Trainee</h3>
-            <h4>Noble Software Solutions, Tirupur</h4>
-
-            <p>
-              Currently undergoing an intensive Full Stack Development
-              training program at Noble Software Solutions, Tirupur.
-              Gaining hands-on experience in HTML, CSS, JavaScript, React.js,
-              Node.js, Express.js, MySQL, JSON, REST APIs, Git, web
-              application deployment, and full-stack project development.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-
-          <div class="timeline-content">
-            <span>May 2025 - June 2025</span>
-            <h3>AI with Python Trainee</h3>
-            <h4>ATS Technosoft, Coimbatore</h4>
-
-            <p>
-              Completed intensive training in Artificial Intelligence using
-              Python with practical exposure to core AI concepts and
-              programming fundamentals. Gained hands-on experience through
-              project-oriented learning, real-time use cases, and coding
-              exercises.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-
           <div class="timeline-content">
             <span>2023 - 2026</span>
-            <h3>Bachelor of Computer Applications</h3>
+            <h3>Bachelor of Computer Applications (BCA)</h3>
             <h4>St. Joseph's College for Women, Tirupur</h4>
-
-            <p>
-              Affiliated with Bharathiar University.
-            </p>
+            <p>Bharathiar University.</p>
           </div>
         </div>
-
       </div>
     </section>
 
-    <section class="section" id="competencies">
-      <div class="section-heading">
-        <p>WHAT I BRING</p>
-        <h2>Core <span>Competencies</span></h2>
-      </div>
-
-      <div class="skill-list-block">
-        <article class="skill-list-group"><h3>IoT &amp; Embedded Systems</h3></article>
-        <article class="skill-list-group"><h3>Software Testing &amp; Debugging</h3></article>
-        <article class="skill-list-group"><h3>Analytical Thinking</h3></article>
-        <article class="skill-list-group"><h3>Team Collaboration</h3></article>
-        <article class="skill-list-group"><h3>Communication Skills</h3></article>
-        <article class="skill-list-group"><h3>Time Management</h3></article>
-        <article class="skill-list-group"><h3>Adaptability &amp; Continuous Learning</h3></article>
-      </div>
-    </section>
-
+    <!-- Achievement Section -->
     <section class="section" id="additional-information">
       <div class="section-heading">
-        <p>MORE ABOUT ME</p>
-        <h2>Languages &amp; <span>Achievement</span></h2>
+        <p>ACHIEVEMENT</p>
+        <h2>Research &amp; <span>Achievement</span></h2>
       </div>
 
-      <div class="about-content">
+      <div class="about-content achievement-layout">
         <div class="about-text">
-          <h3>Languages</h3>
-          <div class="language-list" aria-label="Languages">
-            <span>English</span>
-            <span>Tamil</span>
-            <span>Hindi <i class="fas fa-comments" aria-label="spoken"></i></span>
-            <span>Urdu <i class="fas fa-comments" aria-label="spoken"></i></span>
-          </div>
+          <h3>How API Works in Today's World</h3>
+          <p>Research paper presentation at an international conference.</p>
         </div>
-        <div class="about-text">
-          <h3>Additional Achievement</h3>
-          <button class="achievement-card" id="achievement-trigger" type="button">
+        <button class="achievement-card" id="achievement-trigger" type="button">
+          <span class="achievement-header-row">
             <span class="achievement-mark"><i class="fas fa-award"></i></span>
-            <span>
-              <strong>How APIs Work in Today's World</strong>
-              <small>Research paper presentation</small>
-            </span>
+            <strong>How API Works in Today's World</strong>
+          </span>
+          <span class="achievement-link-row">
+            <small>View Achievement Details</small>
             <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-          </button>
-        </div>
+          </span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Documents Section -->
+    <section class="section" id="documents">
+      <div class="section-heading">
+        <p>PROFESSIONAL DOCUMENTS</p>
+        <h2>My professional <span>documents</span></h2>
+      </div>
+
+      <div class="documents-grid">
+        <a class="document-card" href="CV.pdf" target="_blank" rel="noopener">
+          <i class="fas fa-file-pdf" aria-hidden="true"></i>
+          <span><strong>View CV</strong><small>Open Curriculum Vitae</small></span>
+          <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
+        <a class="document-card" href="CV.pdf" target="_blank" rel="noopener">
+          <i class="fas fa-file-lines" aria-hidden="true"></i>
+          <span><strong>View Resume</strong><small>Open professional resume</small></span>
+          <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
       </div>
     </section>
 
@@ -438,7 +361,7 @@
     <section class="section" id="contact">
       <div class="section-heading">
         <p>LET'S WORK TOGETHER</p>
-        <h2>Contact <span>Me</span></h2>
+        <h2>Let's Build <span>Something</span></h2>
       </div>
 
       <div class="contact-container">
@@ -470,6 +393,7 @@
         <form id="contact-form" class="contact-form">
           <input type="text" id="name" placeholder="Your Name" required />
           <input type="email" id="email" placeholder="Your Email" required />
+          <input type="tel" id="phone" placeholder="Your Phone Number" required />
           <textarea id="message" rows="6" placeholder="Your Message" required></textarea>
 
           <button type="submit" class="btn primary-btn">
@@ -496,14 +420,15 @@
       </button>
       <p class="modal-kicker">PROJECT CASE STUDY</p>
       <h2 id="modal-title"></h2>
+      <p class="modal-date" id="modal-date"></p>
       <p class="modal-summary" id="modal-summary"></p>
       <div class="modal-details">
         <div>
-          <h3>Focus</h3>
+          <h3>Project brief</h3>
           <p id="modal-focus"></p>
         </div>
         <div>
-          <h3>Learning outcome</h3>
+          <h3>Key challenges &amp; learnings</h3>
           <p id="modal-outcome"></p>
         </div>
       </div>
@@ -525,8 +450,6 @@
       </p>
     </div>
   </div>
-
-  <canvas class="cursor-trail-canvas" id="cursor-trail" aria-hidden="true"></canvas>
 
   <script src="script.js"></script>
 </body>

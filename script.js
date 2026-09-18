@@ -4,13 +4,11 @@ const navbar = document.getElementById("navbar");
 const contactForm = document.getElementById("contact-form");
 const formMessage = document.getElementById("form-message");
 const yearElement = document.getElementById("year");
-const coverScreen = document.getElementById("coverScreen");
-const enterBtn = document.getElementById("enterBtn");
-const coverTitle = document.getElementById("coverTitle");
 const scrollProgress = document.getElementById("scroll-progress");
 const projectModal = document.getElementById("project-modal");
 const modalClose = document.getElementById("modal-close");
 const modalTitle = document.getElementById("modal-title");
+const modalDate = document.getElementById("modal-date");
 const modalSummary = document.getElementById("modal-summary");
 const modalFocus = document.getElementById("modal-focus");
 const modalOutcome = document.getElementById("modal-outcome");
@@ -18,22 +16,20 @@ const modalTech = document.getElementById("modal-tech");
 const achievementTrigger = document.getElementById("achievement-trigger");
 const achievementModal = document.getElementById("achievement-modal");
 const achievementModalClose = document.getElementById("achievement-modal-close");
+const roleText = document.getElementById("role-text");
+const profileRoleText = document.getElementById("profile-role-text");
 
 const projectDetails = {
-  elite: {
-    title: "ELITE EXHAUST CARE",
-    summary: "LPG Leakage and Smoke Detection Safety System",
-    focus: "Designed and developed an IoT-based Smart Kitchen Safety Monitoring System.",
-    outcome: "Monitored LPG gas leakage, fire, smoke, and abnormal temperature levels with buzzer and cloud-based notifications.",
-    technologies: ["ESP3266", "Embedded C", "Micro Python", "MQ-2 Gas Sensor", "Flame Sensor", "Temperature Sensor", "Blynk", "Firebase", "Arduino IDE"]
-  },
-  crm: {
-    title: "CRM Application for Jewel Management",
-    summary: "A Customer Relationship Management application developed using the Salesforce platform.",
-    focus: "Managed customer information and sales records through organized data handling.",
-    outcome: "Designed reports and dashboards to provide business insights and support customer relationship management.",
-    technologies: ["Salesforce CRM", "Reports & Dashboards", "Data Management"]
-  }
+  mp3TagEditor: { title: "MP3 Tag Reader and Editor", date: "July 2026 - August 2026", summary: "Developed a command-line MP3 Tag Reader and Editor application to read, display, and modify ID3 metadata from MP3 files. The application supports viewing song title, artist, album, year, track number, and genre, along with editing selected metadata fields using command-line arguments. Implemented binary file handling techniques to read, modify, and preserve MP3 metadata while maintaining the remaining MP3 data.", focus: "Implemented ID3 tag validation and metadata extraction. Used structures and pointers to manage MP3 metadata. Implemented metadata editing while preserving remaining MP3 data.", outcome: "Gained practical experience in binary data processing, bitwise operations, command-line arguments, and debugging.", technologies: ["Advanced C Programming", "Structures", "File Handling", "Pointers", "String Handling", "Bitwise Operations", "Command-Line Arguments", "ID3 Metadata", "Binary File Handling"] },
+  steganography: { title: "Image Steganography Using LSB Encoding & Decoding", date: "May 2026 - June 2026", summary: "Built an Image Steganography application that enables secure hiding and retrieval of text messages inside BMP image files using the Least Significant Bit (LSB) encoding technique. Implemented encoding and decoding mechanisms while preserving the integrity and visual quality of the original image.", focus: "Implemented LSB encoding and decoding. Worked with BMP file structure and image headers. Used bitwise operations while maintaining image integrity.", outcome: "Improved modular programming, file handling, debugging, and CLI development skills.", technologies: ["Advanced C Programming", "File Handling", "Bitwise Operations", "Pointers", "Structures", "Functions", "Command-Line Arguments", "BMP File Handling"] },
+  addressBook: { title: "Address Book Management System", date: "March 2026 - April 2026", summary: "Built a command-line Address Book Management System for adding, searching, editing, deleting, and displaying contact information. Implemented file handling to permanently save and load contact records across multiple program executions.", focus: "Designed structured contact management using C structures. Implemented persistent file storage and retrieval. Developed search, edit, and delete functionality.", outcome: "Gained experience in modular programming, input validation, debugging, and menu-driven applications.", technologies: ["Advanced C Programming", "Structures", "File Handling", "Functions", "Pointers", "String Handling", "Command-Line Interface (CLI)"] },
+  elite: { title: "ELITE EXHAUST CARE - LPG Leakage and Smoke Detection Safety System", date: "December 2025 - February 2026", summary: "Designed and developed an IoT-based Smart Kitchen Safety Monitoring System to monitor LPG gas leakage, fire, smoke, and abnormal temperature levels. The system uses embedded sensors and provides buzzer and cloud-based alerts. Real-time sensor data is transmitted through Wi-Fi for remote monitoring.", focus: "Integrated multiple safety sensors. Implemented Wi-Fi-based IoT connectivity. Calibrated sensor thresholds to reduce false alarms.", outcome: "Gained experience in embedded firmware, sensor interfacing, IoT communication, real-time monitoring, debugging, and hardware integration.", technologies: ["ESP8266", "Embedded C", "MicroPython", "MQ-2 Gas Sensor", "Flame Sensor", "Temperature Sensor", "Buzzer", "Wi-Fi", "Blynk", "Firebase", "Arduino IDE"] },
+  laserGrid: { title: "Laser Beam Security Grid - IoT", date: "October 2025 - November 2025", summary: "Designed and developed an IoT-based Laser Beam Security Grid for real-time intrusion detection and security monitoring. The system uses a laser transmitter and LDR sensor with NodeMCU (ESP8266) to monitor beam interruptions. When an interruption is detected, it triggers a buzzer alarm and uses Wi-Fi for remote monitoring.", focus: "Integrated laser transmitter and LDR sensor with NodeMCU. Implemented real-time intrusion detection and buzzer alerts when the beam was interrupted.", outcome: "Used Wi-Fi connectivity for remote monitoring and gained experience in IoT communication and hardware integration.", technologies: ["IoT", "Embedded Systems", "NodeMCU (ESP8266)", "Arduino IDE", "LDR Sensor", "Laser Transmitter", "Buzzer", "Sensor Integration", "Hardware Interfacing", "Wi-Fi Communication"] },
+  irrigation: { title: "Automatic Irrigation System Using Rain Sensor and Soil Moisture Sensor", date: "August 2025 - September 2025", summary: "Developed an IoT-based Automatic Irrigation System to automate plant watering based on soil moisture and rain conditions. Integrated soil moisture and rain sensors with NodeMCU and used a relay module to automatically control the water pump.", focus: "Integrated soil moisture and rain sensors. Automated water pump control using relay-based automation.", outcome: "Reduced water wastage and over-irrigation while gaining experience in IoT development, sensor interfacing, microcontroller programming, and hardware integration.", technologies: ["NodeMCU", "IoT", "Soil Moisture Sensor", "Rain Sensor", "Relay Module", "Water Pump", "Blynk", "Sensor Interfacing"] },
+  crm: { title: "CRM Jewel Management System", date: "June 2025 - July 2025", summary: "Developed a Customer Relationship Management application using Salesforce to manage customer information and sales records. Designed reports and dashboards for business analysis and improved customer relationship management through organized data handling.", focus: "Developed a CRM application for customer and sales information. Created reports and dashboards.", outcome: "Improved understanding of Salesforce CRM and customer relationship management.", technologies: ["Salesforce CRM", "Reports & Dashboards", "Data Management"] },
+  lease: { title: "Lease Management System - Salesforce CRM", date: "November 2024 - May 2025", summary: "Developed a Salesforce-based Lease Management System to streamline property leasing operations including tenant management, lease agreements, payment tracking, and automated communication. Created custom objects for Property, Tenant, Lease, and Payment and implemented Salesforce automation tools.", focus: "Created custom Salesforce objects. Implemented Flows, Validation Rules, Approval Processes, Apex Triggers, and Scheduled Apex.", outcome: "Implemented automated email notifications and gained practical experience in Salesforce CRM development, Apex, SOQL, process automation, and data validation.", technologies: ["Salesforce CRM", "Apex", "SOQL", "Lightning App Builder", "Salesforce Flow", "Validation Rules", "Approval Process", "Apex Triggers", "Scheduled Apex"] },
+  ecommerce: { title: "E-Commerce API Development", date: "February 2024 - March 2024", summary: "Developed backend APIs for an e-commerce platform as part of Python Stack Development training. Implemented API functionality for product management, data handling, and backend operations. Designed and tested API endpoints for communication between application and backend services.", focus: "Developed backend API endpoints and implemented structured JSON responses.", outcome: "Gained practical experience in REST API concepts, HTTP methods, API design, and integration.", technologies: ["Python", "REST API", "Backend Development", "API Development", "JSON", "HTTP Methods", "Data Handling"] },
+  guardian: { title: "Guardian Care Autonomous Safety Network - IoT", date: "December 2023 - January 2024", summary: "Developed an IoT-based security system for monitoring restricted areas using PIR and HC-SR04 ultrasonic sensors to detect movement and measure distance. Integrated NodeMCU (ESP8266) for sensor data processing and Wi-Fi connectivity, with buzzer and LED alerts for immediate security notifications.", focus: "Used PIR and HC-SR04 ultrasonic sensors. Integrated NodeMCU (ESP8266) for sensor processing and Wi-Fi connectivity. Designed automated, real-time safety monitoring.", outcome: "Implemented buzzer and LED alerts for immediate security notifications.", technologies: ["IoT", "Embedded Systems", "NodeMCU (ESP8266)", "PIR Sensor", "HC-SR04 Ultrasonic Sensor", "Arduino IDE", "Embedded C", "Wi-Fi/IoT", "Buzzer & LED"] }
 };
 
 const closeModal = (modal) => {
@@ -54,6 +50,7 @@ const openProjectCaseStudy = (projectKey) => {
   }
 
   modalTitle.textContent = details.title;
+  modalDate.textContent = details.date;
   modalSummary.textContent = details.summary;
   modalFocus.textContent = details.focus;
   modalOutcome.textContent = details.outcome;
@@ -124,6 +121,167 @@ if (yearElement) {
   yearElement.textContent = new Date().getFullYear();
 }
 
+const roles = ["Python Developer", "Web Developer", "Full Stack Developer", "Salesforce Developer"];
+const profileRoles = [
+  {
+    title: "Salesforce",
+    subtitle: "CRM Development",
+    icon: "fa-cloud",
+    position: "right-top"
+  },
+  {
+    title: "Full Stack",
+    subtitle: "Developement",
+    icon: "fa-computer",
+    position: "middle-top"
+  },
+  {
+    title: "IOT",
+    subtitle: "Embedded Systems",
+    icon: "fa-microchip",
+    position: "bottom-center"
+  }
+];
+let roleIndex = 0;
+const heroPhotoFrame = document.querySelector(".hero-photo-frame");
+const profileRoleStack = document.querySelector(".hero-photo-role-stack");
+let profileRolesVisible = false;
+
+if (profileRoleText) {
+  const rotatingProfileRoles = [
+    "Full Stack Developer",
+    "Web Developer",
+    "Software Developer",
+    "Salesforce Developer",
+    "Python Developer"
+  ];
+
+  let profileRoleIndex = 0;
+
+  const rotateProfileRole = () => {
+    profileRoleText.classList.add("is-changing");
+
+    window.setTimeout(() => {
+      profileRoleIndex = (profileRoleIndex + 1) % rotatingProfileRoles.length;
+      profileRoleText.textContent = rotatingProfileRoles[profileRoleIndex];
+      profileRoleText.classList.remove("is-changing");
+    }, 180);
+  };
+
+  profileRoleText.textContent = rotatingProfileRoles[0];
+  window.setInterval(rotateProfileRole, 2200);
+}
+
+if (roleText) {
+  let isDeleting = false;
+  let currentCharIndex = 0;
+  let typingTimer = null;
+
+  const startRoleTypingCycle = () => {
+    const currentRole = roles[roleIndex];
+
+    if (!isDeleting) {
+      currentCharIndex += 1;
+      roleText.textContent = currentRole.slice(0, currentCharIndex);
+
+      if (currentCharIndex < currentRole.length) {
+        typingTimer = window.setTimeout(startRoleTypingCycle, 110);
+        return;
+      }
+
+      typingTimer = window.setTimeout(() => {
+        isDeleting = true;
+        startRoleTypingCycle();
+      }, 1200);
+      return;
+    }
+
+    currentCharIndex -= 1;
+    roleText.textContent = currentRole.slice(0, currentCharIndex);
+
+    if (currentCharIndex > 0) {
+      typingTimer = window.setTimeout(startRoleTypingCycle, 65);
+      return;
+    }
+
+    isDeleting = false;
+    roleIndex = (roleIndex + 1) % roles.length;
+    currentCharIndex = 0;
+    typingTimer = window.setTimeout(startRoleTypingCycle, 220);
+  };
+
+  roleText.textContent = "";
+  startRoleTypingCycle();
+}
+
+const tickerTrack = document.querySelector(".skills-ticker-track");
+if (tickerTrack && !tickerTrack.dataset.duplicated) {
+  const tickerItems = Array.from(tickerTrack.children);
+  tickerItems.forEach((item) => {
+    const clone = item.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    tickerTrack.appendChild(clone);
+  });
+  tickerTrack.dataset.duplicated = "true";
+}
+
+if (heroPhotoFrame && profileRoleStack) {
+  const renderProfileCards = () => {
+    if (profileRoleStack.querySelectorAll(".profile-role-card").length) {
+      return;
+    }
+
+    profileRoles.forEach((role, index) => {
+      const card = document.createElement("div");
+      card.className = "profile-role-card";
+      card.dataset.position = role.position;
+      card.style.transitionDelay = `${index * 80}ms`;
+      card.setAttribute("aria-hidden", "true");
+      card.innerHTML = `
+        <span class="profile-role-icon"><i class="fas ${role.icon}"></i></span>
+        <div>
+          <strong>${role.title}</strong>
+          <small>${role.subtitle}</small>
+        </div>
+      `;
+      profileRoleStack.appendChild(card);
+    });
+  };
+
+  const setProfileCardVisibility = (isVisible) => {
+    renderProfileCards();
+
+    const profileCards = profileRoleStack.querySelectorAll(".profile-role-card");
+    profileCards.forEach((card, index) => {
+      card.style.transitionDelay = `${index * 80}ms`;
+      card.classList.toggle("is-visible", isVisible);
+      card.setAttribute("aria-hidden", String(!isVisible));
+    });
+
+    profileRoleStack.classList.toggle("is-visible", isVisible);
+    profileRolesVisible = isVisible;
+    heroPhotoFrame.setAttribute("aria-expanded", String(isVisible));
+    heroPhotoFrame.setAttribute("aria-label", isVisible ? "Hide developer roles" : "Show developer roles");
+  };
+
+  const toggleProfileCards = (event) => {
+    if (event && event.type === "keydown" && !(event.key === "Enter" || event.key === " ")) {
+      return;
+    }
+
+    if (event && event.type === "keydown") {
+      event.preventDefault();
+    }
+
+    setProfileCardVisibility(!profileRolesVisible);
+  };
+
+  renderProfileCards();
+  setProfileCardVisibility(false);
+  heroPhotoFrame.addEventListener("click", toggleProfileCards);
+  heroPhotoFrame.addEventListener("keydown", toggleProfileCards);
+}
+
 const updateScrollProgress = () => {
   if (!scrollProgress) {
     return;
@@ -140,58 +298,16 @@ updateScrollProgress();
 window.addEventListener("load", updateScrollProgress);
 window.setTimeout(updateScrollProgress, 100);
 
-// Intro cover interaction
 const isTouchDevice = window.matchMedia("(pointer: coarse)").matches || navigator.maxTouchPoints > 0;
 
 if (isTouchDevice) {
   document.body.classList.add("touch-device");
 }
 
-const revealPortfolio = () => {
-  document.body.classList.add("loaded");
-};
-
-if (enterBtn) {
-  enterBtn.addEventListener("click", revealPortfolio);
-}
-
-if (coverScreen) {
-  coverScreen.addEventListener("click", (event) => {
-    if (event.target === coverScreen) {
-      revealPortfolio();
-    }
-  });
-}
-
-if (coverTitle) {
-  const updateCoverTitleGlow = (event) => {
-    const bounds = coverTitle.getBoundingClientRect();
-    const x = ((event.clientX - bounds.left) / bounds.width) * 100;
-    const y = ((event.clientY - bounds.top) / bounds.height) * 100;
-
-    coverTitle.style.setProperty("--title-glow-x", `${Math.max(0, Math.min(100, x))}%`);
-    coverTitle.style.setProperty("--title-glow-y", `${Math.max(0, Math.min(100, y))}%`);
-    coverTitle.classList.add("is-interactive");
-  };
-
-  coverTitle.addEventListener("pointermove", updateCoverTitleGlow);
-  coverTitle.addEventListener("pointerenter", updateCoverTitleGlow);
-  coverTitle.addEventListener("pointerleave", () => {
-    coverTitle.classList.remove("is-interactive");
-  });
-  coverTitle.addEventListener("pointerdown", (event) => {
-    updateCoverTitleGlow(event);
-
-    if (isTouchDevice) {
-      window.setTimeout(() => coverTitle.classList.remove("is-interactive"), 700);
-    }
-  }, { passive: true });
-}
-
 // Theme Toggle
 const savedTheme = localStorage.getItem("theme");
 
-if (savedTheme !== "light") {
+if (savedTheme === "dark") {
   document.body.classList.add("dark-mode");
 }
 
@@ -222,11 +338,12 @@ if (themeToggle && document.body.classList.contains("dark-mode")) {
 // Mobile Menu Toggle
 if (menuToggle) {
   menuToggle.addEventListener("click", () => {
-    navbar.classList.toggle("active");
+    const isOpen = navbar.classList.toggle("active");
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
 
     const icon = menuToggle.querySelector("i");
 
-    if (navbar.classList.contains("active")) {
+    if (isOpen) {
       icon.classList.remove("fa-bars");
       icon.classList.add("fa-xmark");
     } else {
@@ -248,6 +365,49 @@ document.querySelectorAll(".navbar a").forEach((link) => {
       icon.classList.remove("fa-xmark");
       icon.classList.add("fa-bars");
     }
+
+    if (menuToggle) {
+      menuToggle.setAttribute("aria-expanded", "false");
+    }
+  });
+});
+
+document.addEventListener("pointerdown", (event) => {
+  if (!navbar || !menuToggle || !navbar.classList.contains("active")) {
+    return;
+  }
+
+  if (!(event.target instanceof Element) || event.target.closest(".header")) {
+    return;
+  }
+
+  navbar.classList.remove("active");
+  menuToggle.setAttribute("aria-expanded", "false");
+  const icon = menuToggle.querySelector("i");
+  icon.classList.remove("fa-xmark");
+  icon.classList.add("fa-bars");
+});
+
+document.querySelectorAll(".social-links a").forEach((link) => {
+  link.addEventListener("pointerdown", () => {
+    document.querySelectorAll(".social-links a").forEach((item) => item.classList.remove("is-active"));
+    link.classList.add("is-active");
+
+    window.setTimeout(() => {
+      link.classList.remove("is-active");
+    }, 350);
+  });
+
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    const href = link.getAttribute("href");
+    if (!href) {
+      return;
+    }
+
+    setTimeout(() => {
+      window.open(href, "_blank", "noopener,noreferrer");
+    }, 80);
   });
 });
 
@@ -258,9 +418,10 @@ if (contactForm) {
 
     const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
     const message = document.getElementById("message").value.trim();
 
-    if (!name || !email || !message) {
+    if (!name || !email || !phone || !message) {
       formMessage.textContent = "Please fill in all fields.";
       return;
     }
@@ -268,181 +429,13 @@ if (contactForm) {
     formMessage.textContent = "Thank you! Your message has been prepared successfully.";
 
     const mailSubject = encodeURIComponent("Portfolio Contact Message");
-    const mailBody = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
-    );
-
-    window.location.href =
-      `mailto:asinfathima2705@gmail.com?subject=${mailSubject}&body=${mailBody}`;
-
+    const mailBody = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`);
+    window.location.href = `mailto:asinfathima2705@gmail.com?subject=${mailSubject}&body=${mailBody}`;
     contactForm.reset();
   });
 }
 
-const cursorDot = document.querySelector(".cursor-dot");
-const cursorRing = document.querySelector(".cursor-ring");
-const cursorTrailCanvas = document.getElementById("cursor-trail");
-const cursorTrailContext = cursorTrailCanvas ? cursorTrailCanvas.getContext("2d") : null;
-const cursorTrailConfig = {
-  particleSize: { min: 9, max: 16 },
-  particleCount: 1,
-  particleFrequency: 72,
-  particleLifetime: 650,
-  particleSpeed: 0.4,
-  glowIntensity: 5,
-  particleOpacity: 0.58,
-  symbols: ["🦋", "✦", "✧", "✨"],
-  trailSmoothness: 0.28,
-  butterflySize: 13,
-  butterflyGlow: 8,
-  butterflyFlapSpeed: 0.006,
-  minimumMovement: 1.5,
-  maxParticles: 42,
-  maxDevicePixelRatio: 1.25
-};
-const cursorTrailState = {
-  x: window.innerWidth / 2,
-  y: window.innerHeight / 2,
-  targetX: window.innerWidth / 2,
-  targetY: window.innerHeight / 2,
-  lastParticleTime: 0,
-  lastEmissionX: window.innerWidth / 2,
-  lastEmissionY: window.innerHeight / 2,
-  hasPointerPosition: false,
-  particles: []
-};
-
-const resizeCursorTrail = () => {
-  if (!cursorTrailCanvas || !cursorTrailContext || isTouchDevice) {
-    return;
-  }
-
-  const devicePixelRatio = Math.min(window.devicePixelRatio || 1, cursorTrailConfig.maxDevicePixelRatio);
-  cursorTrailCanvas.width = Math.floor(window.innerWidth * devicePixelRatio);
-  cursorTrailCanvas.height = Math.floor(window.innerHeight * devicePixelRatio);
-  cursorTrailContext.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
-};
-
-const addCursorTrailParticles = (now) => {
-  if (!cursorTrailState.hasPointerPosition) {
-    return;
-  }
-
-  const movement = Math.hypot(
-    cursorTrailState.targetX - cursorTrailState.lastEmissionX,
-    cursorTrailState.targetY - cursorTrailState.lastEmissionY
-  );
-
-  if (movement < cursorTrailConfig.minimumMovement) {
-    return;
-  }
-
-  if (now - cursorTrailState.lastParticleTime < cursorTrailConfig.particleFrequency) {
-    return;
-  }
-
-  cursorTrailState.lastParticleTime = now;
-  cursorTrailState.lastEmissionX = cursorTrailState.targetX;
-  cursorTrailState.lastEmissionY = cursorTrailState.targetY;
-
-  for (let index = 0; index < cursorTrailConfig.particleCount; index += 1) {
-    const sizeRange = cursorTrailConfig.particleSize.max - cursorTrailConfig.particleSize.min;
-    cursorTrailState.particles.push({
-      x: cursorTrailState.x + (Math.random() - 0.5) * 8,
-      y: cursorTrailState.y + (Math.random() - 0.5) * 8,
-      age: 0,
-      size: cursorTrailConfig.particleSize.min + Math.random() * sizeRange,
-      opacity: cursorTrailConfig.particleOpacity * (0.7 + Math.random() * 0.3),
-      rotation: (Math.random() - 0.5) * 0.8,
-      rotationSpeed: (Math.random() - 0.5) * 0.002,
-      velocityX: (Math.random() - 0.5) * cursorTrailConfig.particleSpeed,
-      velocityY: (Math.random() - 0.5) * cursorTrailConfig.particleSpeed,
-      symbol: cursorTrailConfig.symbols[Math.floor(Math.random() * cursorTrailConfig.symbols.length)]
-    });
-  }
-
-  if (cursorTrailState.particles.length > cursorTrailConfig.maxParticles) {
-    cursorTrailState.particles.splice(0, cursorTrailState.particles.length - cursorTrailConfig.maxParticles);
-  }
-};
-
-const drawButterflyCursor = (now, primaryColor, accentColor) => {
-  const { x, y } = cursorTrailState;
-  const flap = Math.sin(now * cursorTrailConfig.butterflyFlapSpeed) * 0.18;
-  const size = cursorTrailConfig.butterflySize;
-
-  cursorTrailContext.save();
-  cursorTrailContext.translate(x, y);
-  cursorTrailContext.globalAlpha = 0.9;
-  cursorTrailContext.shadowBlur = cursorTrailConfig.butterflyGlow;
-  cursorTrailContext.shadowColor = primaryColor;
-
-  cursorTrailContext.fillStyle = accentColor;
-  cursorTrailContext.beginPath();
-  cursorTrailContext.ellipse(-size * 0.48, -size * 0.18, size * (0.45 + flap), size * 0.72, -0.35, 0, Math.PI * 2);
-  cursorTrailContext.ellipse(size * 0.48, -size * 0.18, size * (0.45 + flap), size * 0.72, 0.35, 0, Math.PI * 2);
-  cursorTrailContext.fill();
-
-  cursorTrailContext.fillStyle = primaryColor;
-  cursorTrailContext.beginPath();
-  cursorTrailContext.ellipse(0, 0, size * 0.12, size * 0.68, 0, 0, Math.PI * 2);
-  cursorTrailContext.fill();
-  cursorTrailContext.restore();
-};
-
-const drawCursorTrail = (now, delta) => {
-  if (!cursorTrailContext) {
-    return;
-  }
-
-  const isDarkMode = document.body.classList.contains("dark-mode");
-  const primaryColor = isDarkMode ? "#f3d998" : "#6d2940";
-  const accentColor = isDarkMode ? "#c86d7d" : "#a8792f";
-  cursorTrailContext.clearRect(0, 0, window.innerWidth, window.innerHeight);
-  cursorTrailContext.textAlign = "center";
-  cursorTrailContext.textBaseline = "middle";
-
-  cursorTrailState.particles = cursorTrailState.particles.filter((particle) => {
-    particle.age += delta;
-    particle.x += particle.velocityX * delta;
-    particle.y += particle.velocityY * delta;
-    particle.rotation += particle.rotationSpeed * delta;
-
-    if (particle.age >= cursorTrailConfig.particleLifetime) {
-      return false;
-    }
-
-    const lifetimeProgress = particle.age / cursorTrailConfig.particleLifetime;
-    const fade = 1 - lifetimeProgress;
-    cursorTrailContext.save();
-    cursorTrailContext.translate(particle.x, particle.y);
-    cursorTrailContext.rotate(particle.rotation);
-    cursorTrailContext.globalAlpha = particle.opacity * fade;
-    cursorTrailContext.font = `${particle.size * (0.8 + fade * 0.2)}px sans-serif`;
-    cursorTrailContext.shadowBlur = cursorTrailConfig.glowIntensity * fade;
-    cursorTrailContext.shadowColor = particle.symbol === "🦋" ? accentColor : primaryColor;
-    cursorTrailContext.fillStyle = particle.symbol === "🦋" ? accentColor : primaryColor;
-    cursorTrailContext.fillText(particle.symbol, 0, 0);
-    cursorTrailContext.restore();
-    return true;
-  });
-
-  cursorTrailState.x += (cursorTrailState.targetX - cursorTrailState.x) * cursorTrailConfig.trailSmoothness;
-  cursorTrailState.y += (cursorTrailState.targetY - cursorTrailState.y) * cursorTrailConfig.trailSmoothness;
-  drawButterflyCursor(now, primaryColor, accentColor);
-};
-
 window.addEventListener("pointermove", (event) => {
-  if (!isTouchDevice && cursorTrailCanvas) {
-    cursorTrailState.targetX = event.clientX;
-    cursorTrailState.targetY = event.clientY;
-    cursorTrailState.hasPointerPosition = true;
-  }
-
-  if (!isTouchDevice && cursorDot && cursorRing) {
-    cursorDot.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`;
-  }
-
   if (!isTouchDevice && event.target instanceof Element) {
     const projectCard = event.target.closest(".project-card");
 
@@ -454,52 +447,10 @@ window.addEventListener("pointermove", (event) => {
   }
 });
 
-if (!isTouchDevice && cursorTrailCanvas) {
-  resizeCursorTrail();
-  window.addEventListener("resize", resizeCursorTrail);
-}
-
-if (!isTouchDevice && (cursorTrailCanvas || (cursorDot && cursorRing))) {
-  const state = {
-    x: window.innerWidth / 2,
-    y: window.innerHeight / 2,
-    ringX: window.innerWidth / 2,
-    ringY: window.innerHeight / 2
-  };
-
-  window.addEventListener("pointermove", (event) => {
-    state.x = event.clientX;
-    state.y = event.clientY;
-  });
-
-  let previousTime = performance.now();
-  const animateCursor = (now) => {
-    const delta = Math.min(now - previousTime, 40);
-    previousTime = now;
-    state.ringX += (state.x - state.ringX) * 0.18;
-    state.ringY += (state.y - state.ringY) * 0.18;
-    if (cursorRing) {
-      cursorRing.style.transform = `translate(${state.ringX - 19}px, ${state.ringY - 19}px)`;
-    }
-    addCursorTrailParticles(now);
-    drawCursorTrail(now, delta);
-    requestAnimationFrame(animateCursor);
-  };
-
-  requestAnimationFrame((now) => animateCursor(now));
-
-  document.addEventListener("pointerdown", () => {
-    cursorRing.classList.add("active");
-  });
-
-  document.addEventListener("pointerup", () => {
-    cursorRing.classList.remove("active");
-  });
-}
-
 // Reveal sections as they enter the viewport
 const revealSections = document.querySelectorAll(".section");
 const navigationLinks = document.querySelectorAll(".navbar a");
+const mobileRevealMedia = window.matchMedia("(max-width: 767px) and (prefers-reduced-motion: no-preference)");
 
 if ("IntersectionObserver" in window) {
   const sectionObserver = new IntersectionObserver((entries, observer) => {
@@ -527,4 +478,33 @@ if ("IntersectionObserver" in window) {
   revealSections.forEach((section) => {
     section.classList.add("is-visible");
   });
+}
+
+const learningCards = document.querySelectorAll(".learning-box");
+if (learningCards.length) {
+  const revealLearningCards = (isMobile) => {
+    if (!("IntersectionObserver" in window)) {
+      learningCards.forEach((card) => card.classList.add("is-visible"));
+      return;
+    }
+
+    const learningObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: isMobile ? 0.18 : 0.22,
+      rootMargin: isMobile ? "0px 0px -10% 0px" : "0px 0px -6% 0px"
+    });
+
+    learningCards.forEach((card, index) => {
+      card.style.transitionDelay = `${index * (isMobile ? 160 : 120)}ms`;
+      learningObserver.observe(card);
+    });
+  };
+
+  revealLearningCards(window.matchMedia("(max-width: 767px)").matches);
 }
